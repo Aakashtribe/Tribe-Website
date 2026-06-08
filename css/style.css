@@ -2058,8 +2058,8 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
 }
 .footer-social-icon {
   display: block;
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
 }
 .footer-stores { display: flex; gap: 16px; flex-wrap: wrap; }
 .store-btn {

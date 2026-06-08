@@ -1,0 +1,9 @@
+{
+  "name": "tribe",
+  "private": true,
+  "description": "Tribe marketing site",
+  "scripts": {
+    "dev": "npx --yes serve . -l 8080",
+    "start": "npm run dev"
+  }
+}
