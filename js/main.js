@@ -10,6 +10,7 @@ function setTab(name) {
   panel.querySelectorAll('.reveal:not(.in)').forEach((el, i) => {
     setTimeout(() => el.classList.add('in'), i * 60);
   });
+  if (name === 'spend') restartSpendMarquee();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   updateNavTheme();
   setTimeout(updateNavTheme, 450);
@@ -102,6 +103,27 @@ window.addEventListener('scroll', updateNavTheme, { passive: true });
 window.addEventListener('resize', updateNavTheme, { passive: true });
 updateNavTheme();
 
+/* ─── SPEND SUBS MARQUEE ─── */
+function restartSpendMarquee() {
+  requestAnimationFrame(() => {
+    const track = document.querySelector('#tab-spend .spend-subs-track');
+    if (!track) return;
+    track.style.animation = 'none';
+    void track.offsetWidth;
+    track.style.animation = '';
+  });
+}
+
+const spendSubsMarquee = document.querySelector('#tab-spend .spend-subs-marquee');
+if (spendSubsMarquee) {
+  const spendMarqueeObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) restartSpendMarquee();
+    });
+  }, { threshold: 0.1 });
+  spendMarqueeObserver.observe(spendSubsMarquee);
+}
+
 /* ─── SCROLL REVEAL ─── */
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObserver.unobserve(e.target); } });
@@ -165,10 +187,10 @@ const CURRENCY_SYMBOLS = {
   INR: '₹', PHP: '₱', NGN: '₦', MXN: '$', BRL: 'R$', VND: '₫', GHS: '₵'
 };
 const PLATFORMS = [
-  { id: 'tribe', name: 'tr/be', cls: 't', spread: 0.000, fee: 0.00, eta: '~2 min', fast: true },
-  { id: 'wise', name: 'Wise', cls: 'w', spread: 0.005, fee: 4.50, eta: 'hours', fast: false },
-  { id: 'remitly', name: 'Remitly', cls: 'r', spread: 0.015, fee: 3.99, eta: '1–3 days', fast: false },
-  { id: 'xoom', name: 'Xoom', cls: 'x', spread: 0.020, fee: 4.99, eta: '1–2 days', fast: false }
+  { id: 'tribe', name: 'tr/be', cls: 't', spread: 0.000, fee: 0.00 },
+  { id: 'wise', name: 'Wise', cls: 'w', spread: 0.005, fee: 4.50 },
+  { id: 'remitly', name: 'Remitly', cls: 'r', spread: 0.015, fee: 3.99 },
+  { id: 'xoom', name: 'Xoom', cls: 'x', spread: 0.020, fee: 4.99 }
 ];
 
 function fmtAmount(n) {
@@ -221,7 +243,6 @@ function renderCalc() {
         </td>
         <td>
           <span class="${recvCls}">${fmtAmount(r.recv)} ${to}</span>
-          <span class="recv-eta">${r.eta}</span>
         </td>
       </tr>
     `;

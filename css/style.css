@@ -5,9 +5,9 @@
   --ink:      #1d1d1d;
   --ink-2:    #4a4a4a;
   --ink-3:    #8a8a8a;
-  --yellow:   #FFE900;
-  --yellow-2: #FFF176;
-  --yellow-dk:#D4C200;
+  --yellow:   #E8FF00;
+  --yellow-2: #F4FF8C;
+  --yellow-dk:#BAC900;
   --white:    #ffffff;
   --bg:       #ffffff;
   --bg-off:   #F8F8F6;
@@ -680,7 +680,7 @@ h1.hero-h1--drama .highlight::after {
   font-size: 16px; color: rgba(255,255,255,0.7);
   transition: background 0.2s;
 }
-.p-action-ic.y { background: rgba(255,233,0,0.12); color: var(--yellow); }
+.p-action-ic.y { background: rgba(232,255,0,0.12); color: var(--yellow); }
 .p-action-lbl { font-size: 10px; color: rgba(255,255,255,0.35); font-weight: 600; }
 .p-sec-lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.28); margin-bottom: 12px; }
 .p-tx {
@@ -739,7 +739,7 @@ h1.hero-h1--drama .highlight::after {
 .p-card::after {
   content: ''; position: absolute; top: -40px; right: -30px;
   width: 130px; height: 130px;
-  background: radial-gradient(circle, rgba(255,233,0,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232,255,0,0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 .p-card-brand { font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-bottom: 20px; font-weight: 700; text-transform: uppercase; }
@@ -765,7 +765,7 @@ h1.hero-h1--drama .highlight::after {
 /* receive UI */
 .p-tabs { display: flex; gap: 7px; margin-bottom: 20px; }
 .p-tab { flex: 1; text-align: center; padding: 9px; border-radius: 11px; font-size: 12.5px; font-weight: 700; }
-.p-tab.on { background: rgba(255,233,0,0.1); color: var(--yellow); border: 1px solid rgba(255,233,0,0.25); }
+.p-tab.on { background: rgba(232,255,0,0.1); color: var(--yellow); border: 1px solid rgba(232,255,0,0.25); }
 .p-tab.off { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.28); }
 .p-acct-box { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 18px; margin-bottom: 12px; }
 .p-acct-lbl { font-size: 10.5px; color: rgba(255,255,255,0.36); margin-bottom: 4px; }
@@ -783,8 +783,8 @@ h1.hero-h1--drama .highlight::after {
 .p-bank-name { font-size: 12.5px; font-weight: 600; color: #fff; }
 .p-copy-btn {
   width: 100%; padding: 13px;
-  background: rgba(255,233,0,0.08);
-  border: 1px solid rgba(255,233,0,0.24);
+  background: rgba(232,255,0,0.08);
+  border: 1px solid rgba(232,255,0,0.24);
   border-radius: 12px; font-size: 13px; font-weight: 700;
   color: var(--yellow); margin-bottom: 18px;
 }
@@ -1091,13 +1091,6 @@ h1.hero-h1--drama .highlight::after {
   white-space: nowrap;
 }
 .recv-amount--best { font-size: 18px; }
-.recv-eta {
-  display: block;
-  margin-top: 2px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--ink-3);
-}
 .fee-text { font-weight: 600; color: var(--ink-2); white-space: nowrap; }
 .fee-text--free { color: var(--green); font-weight: 800; }
 .rate-mono {
@@ -1180,12 +1173,27 @@ h1.hero-h1--drama .highlight::after {
   text-align: center;
 }
 .spend-feature-title {
+  position: relative;
+  display: inline-block;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
   margin: 16px 0 10px;
   line-height: 1.3;
+  isolation: isolate;
+}
+.spend-feature-title::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: 0.12em;
+  height: 0.22em;
+  background: #E8FF00;
+  border-radius: 1px;
+  z-index: -1;
+  pointer-events: none;
 }
 .spend-feature-desc {
   font-size: 15px;
@@ -1234,20 +1242,21 @@ h1.hero-h1--drama .highlight::after {
 }
 .spend-subs-marquee {
   overflow: hidden;
+  width: 100%;
   margin-top: 48px;
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
-.spend-subs-scroll {
+.spend-subs-track {
   display: flex;
   width: max-content;
-  animation: spendSubsMarquee 32s linear infinite;
+  animation: spendSubsMarquee 35s linear infinite;
   will-change: transform;
 }
-.spend-subs-scroll:hover {
+.spend-subs-marquee:hover .spend-subs-track {
   animation-play-state: paused;
 }
-.spend-subs-group {
+.spend-subs-scroll {
   display: flex;
   gap: 12px;
   flex-shrink: 0;
@@ -1359,12 +1368,20 @@ h1.hero-h1--drama .highlight::after {
   margin-bottom: 20px;
 }
 .receive-how-title {
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
   font-size: 17px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--ink);
-  margin: 0 0 10px;
+  margin: 0 -3px 10px;
   line-height: 1.3;
+  background-image: linear-gradient(#E8FF00, #E8FF00);
+  background-size: 100% 0.5lh;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding: 0 3px;
 }
 .receive-how-desc {
   font-size: 14px;
@@ -1618,11 +1635,19 @@ h1.hero-h1--drama .highlight::after {
   margin-bottom: 16px;
 }
 .about-builders-intro .sub {
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
   font-size: 20px;
   color: var(--ink-2);
   max-width: 600px;
   line-height: 1.6;
-  margin-inline: auto;
+  background-image: linear-gradient(#E8FF00, #E8FF00);
+  background-size: 100% calc(1lh / 3);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding: 0 3px;
+  margin: 0 -3px;
 }
 .team-grid {
   display: grid;
@@ -1642,7 +1667,7 @@ h1.hero-h1--drama .highlight::after {
 .about-team-photo {
   max-width: 960px;
   margin: 0 auto 36px;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 9;
   background: var(--bg-card);
   border: 1px solid var(--line);
   border-radius: var(--r-xl);
@@ -1851,7 +1876,7 @@ h1.hero-h1--drama .highlight::after {
 .person-role {
   font-size: 15px;
   font-weight: 600;
-  color: #7B3FE4;
+  color: #444444;
   margin-bottom: 10px;
 }
 .person-meta {
@@ -1949,12 +1974,21 @@ h1.hero-h1--drama .highlight::after {
 }
 .contact-hero p { font-size: 19px; color: var(--ink-2); max-width: 520px; line-height: 1.55; margin-bottom: 28px; }
 .contact-email {
-  display: inline-block;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
   font-size: clamp(22px, 3vw, 32px);
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1.3;
   color: var(--ink);
   text-decoration: none;
+  background-image: linear-gradient(#E8FF00, #E8FF00);
+  background-size: 100% calc(1lh / 3);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding: 0 3px;
+  margin: 0 -3px;
 }
 .contact-email:hover {
   color: var(--ink-2);
@@ -2276,7 +2310,7 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   bottom: 0;
   width: 100%;
   height: 2px;
-  background-color: currentColor;
+  background-color: #E8FF00;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 1s linear;
