@@ -1025,9 +1025,9 @@ h1.hero-h1--drama .highlight::after {
   pointer-events: none;
 }
 .compare-table-scroll {
-  overflow-x: auto;
+  overflow-x: hidden;
 }
-.compare-table { width: 100%; border-collapse: collapse; min-width: 420px; }
+.compare-table { width: 100%; border-collapse: collapse; }
 .compare-table thead tr { background: var(--bg-off); }
 .compare-table th {
   padding: 14px 20px; text-align: left;
@@ -1053,7 +1053,7 @@ h1.hero-h1--drama .highlight::after {
   text-align: right;
   padding-right: 20px;
 }
-.platform-cell { display: flex; align-items: center; gap: 12px; min-width: 140px; }
+.platform-cell { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .platform-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .platform-name {
   font-size: 15px;
@@ -1240,12 +1240,18 @@ h1.hero-h1--drama .highlight::after {
 }
 .spend-subs-scroll {
   display: flex;
-  gap: 12px;
   width: max-content;
   animation: spendSubsMarquee 32s linear infinite;
+  will-change: transform;
 }
 .spend-subs-scroll:hover {
   animation-play-state: paused;
+}
+.spend-subs-group {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+  padding-right: 12px;
 }
 @keyframes spendSubsMarquee {
   from { transform: translateX(0); }
@@ -2034,7 +2040,26 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   font-weight: 600;
   color: #444444;
   max-width: 280px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+}
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.footer-social-link {
+  display: block;
+  line-height: 0;
+  transition: opacity 0.2s;
+}
+.footer-social-link:hover {
+  opacity: 0.7;
+}
+.footer-social-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
 }
 .footer-stores { display: flex; gap: 16px; flex-wrap: wrap; }
 .store-btn {
@@ -2137,11 +2162,9 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
 
 #tab-home .hero {
   background-color: #0d0d0d;
-  background-image: url('../assets/images/screens/Hero3.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   color: #fff;
+  position: relative;
+  overflow: hidden;
   min-height: var(--hero-vh);
   height: var(--hero-vh);
   box-sizing: border-box;
@@ -2149,7 +2172,20 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   display: flex;
   align-items: center;
 }
+#tab-home .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/images/screens/Hero6.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scaleX(-1);
+  z-index: 0;
+}
 #tab-home .hero > .container {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   display: flex;
@@ -2311,8 +2347,16 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   line-height: 1.6;
   color: var(--ink-3);
 }
-#tab-home .testimonials-grid { gap: 24px; margin-top: 0; }
+#tab-home .testimonials-grid {
+  gap: 24px;
+  margin-top: 0;
+  align-items: stretch;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 #tab-home .testimonial {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 36px 32px;
   border-radius: var(--r-xl);
   box-shadow: var(--shadow-sm);
@@ -2327,9 +2371,15 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
 #tab-home .testimonial-q {
   font-size: 15px;
   line-height: 1.65;
-  margin-bottom: 28px;
+  flex: 1;
+  margin-bottom: 0;
+}
+#tab-home .t-author {
+  margin-top: auto;
+  padding-top: 28px;
 }
 #tab-home .t-avatar--photo { border: 2px solid var(--line); }
+
 #tab-home .reveal {
   transition: opacity 0.8s var(--home-ease), transform 0.8s var(--home-ease);
 }
@@ -2360,7 +2410,12 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   .footer-grid > :first-child {
     grid-column: 1 / -1;
   }
-  .fees-grid, .testimonials-grid, .values-grid { grid-template-columns: 1fr 1fr; }
+  .fees-grid, .values-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #tab-home .testimonials-grid { gap: 16px; }
+  #tab-home .testimonial { padding: 28px 20px; }
+  #tab-home .testimonial-q { font-size: 14px; line-height: 1.55; }
+  #tab-home .t-author { padding-top: 20px; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .about-builders .team-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .vc-logos-row, .investors-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2429,7 +2484,6 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   /* Compare table */
   .compare-deals-title { font-size: 22px; }
   .compare-table-head { padding: 20px 16px 16px; }
-  .compare-table { min-width: 420px; }
   .compare-table th,
   .compare-table td { padding: 14px 16px; }
   .compare-table th:last-child,
@@ -2461,7 +2515,6 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   .about-why-mark { margin-inline: auto; }
 
   .btn-download { font-size: 12px; padding: 8px 14px; }
-  .compare-table-scroll { -webkit-overflow-scrolling: touch; }
   .spend-feature-desc { max-width: none; }
 }
 
@@ -2522,8 +2575,20 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   #tab-home .feat-section { padding: 64px 0; }
   #tab-home .feat-row { margin-bottom: 56px; }
   #tab-home .testimonials-section { padding: 64px 0 48px; }
+  #tab-home .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
   #tab-home .fees-block { padding: 40px 24px; margin: 40px 0; }
-  #tab-home .testimonial { padding: 28px 24px; }
+  #tab-home .testimonial {
+    padding: 28px 24px;
+    height: auto;
+  }
+  #tab-home .testimonial-q {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  #tab-home .t-author { padding-top: 28px; }
 
   #tab-send .hero,
   #tab-spend .hero,
@@ -2555,38 +2620,9 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   }
 
   .compare-deals-title { font-size: 20px; }
-  .compare-table {
-    border-collapse: separate;
-    border-spacing: 0;
-    min-width: 420px;
-  }
-  .compare-table th:first-child,
-  .compare-table td:first-child {
-    position: sticky;
-    left: 0;
-    z-index: 2;
-    background: #fff;
-    width: 152px;
-    min-width: 152px;
-    max-width: 152px;
-    padding-left: 14px;
-    padding-right: 10px;
-    box-shadow: 4px 0 8px -2px rgba(0, 0, 0, 0.08);
-  }
-  .compare-table thead th:first-child {
-    z-index: 3;
-    background: var(--bg-off);
-  }
-  .compare-table tbody tr.row-best td:first-child {
-    box-shadow:
-      inset 4px 0 0 var(--yellow),
-      4px 0 8px -2px rgba(0, 0, 0, 0.08);
-  }
   .compare-table th { font-size: 10px; padding: 12px 12px; }
   .compare-table td { padding: 14px 12px; font-size: 13px; }
   .compare-table th:first-child { padding-left: 14px; }
-  .compare-table th:nth-child(2),
-  .compare-table td:nth-child(2) { min-width: 124px; }
   .compare-table th:last-child,
   .compare-table td:last-child { padding-right: 12px; }
   .platform-cell { min-width: 0; gap: 10px; }
