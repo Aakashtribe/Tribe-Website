@@ -1,0 +1,471 @@
+/* ─────────────────────────────────────────
+   REFERRAL FLOW
+───────────────────────────────────────── */
+.refer-page {
+  background: var(--bg);
+}
+
+.refer-nav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid var(--line);
+}
+
+.refer-nav .nav-inner {
+  height: 64px;
+}
+
+.refer-back-link {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-2);
+  letter-spacing: -0.01em;
+  transition: color 0.2s var(--ease);
+}
+
+.refer-back-link:hover {
+  color: var(--ink);
+}
+
+.refer-back-link .slash {
+  color: var(--yellow-dk);
+}
+
+.refer-main {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  padding: 56px 0 80px;
+}
+
+.refer-form-container {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  animation: referSlideUp 0.5s var(--ease) both;
+}
+
+@keyframes referSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+.refer-progress {
+  margin-bottom: 48px;
+}
+
+.refer-progress-steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.refer-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.refer-step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-3);
+  margin-bottom: 8px;
+  transition: all 0.25s var(--ease);
+}
+
+.refer-step-circle.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--white);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.refer-step-circle.completed {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--white);
+}
+
+.refer-step-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-3);
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.refer-section {
+  display: none;
+  animation: referFadeIn 0.35s var(--ease) both;
+}
+
+.refer-section.active {
+  display: block;
+}
+
+@keyframes referFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.refer-title {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.refer-title .highlight {
+  position: relative;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  isolation: isolate;
+}
+
+.refer-title .highlight::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: 0.1em;
+  height: 0.24em;
+  background: var(--yellow);
+  border-radius: 1px;
+  z-index: -1;
+}
+
+.refer-subtitle {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin-bottom: 36px;
+  max-width: 480px;
+}
+
+.refer-field {
+  margin-bottom: 24px;
+}
+
+.refer-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.refer-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-sm);
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.refer-input::placeholder {
+  color: var(--ink-3);
+}
+
+.refer-input:focus {
+  outline: none;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(29, 29, 29, 0.06);
+}
+
+.refer-phone-row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.refer-country-code {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.refer-error {
+  font-size: 13px;
+  color: #dc2626;
+  margin-top: 8px;
+}
+
+.refer-error.hidden {
+  display: none;
+}
+
+.refer-gift-box {
+  background: var(--bg-off);
+  border-left: 3px solid var(--yellow);
+  border-radius: var(--r-sm);
+  padding: 18px 20px;
+  margin-top: 8px;
+}
+
+.refer-gift-box p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.refer-gift-box p + p {
+  margin-top: 8px;
+}
+
+.refer-gift-amount {
+  color: var(--ink);
+}
+
+.refer-gift-note {
+  font-size: 14px !important;
+  color: var(--ink-3) !important;
+}
+
+.refer-info-box {
+  background: var(--bg-off);
+  border-radius: var(--r-sm);
+  padding: 16px 18px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.refer-text-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.refer-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.refer-check input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--ink);
+}
+
+.refer-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.refer-btn {
+  flex: 1;
+  min-height: 52px;
+  border-radius: var(--r-pill);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  transition: all 0.2s var(--ease);
+}
+
+.refer-btn-back {
+  display: none;
+  background: var(--bg-card);
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+}
+
+.refer-btn-back.visible {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.refer-btn-back:hover {
+  background: var(--bg-off);
+  border-color: var(--line-2);
+}
+
+.refer-btn-continue {
+  width: 100%;
+}
+
+.refer-success {
+  text-align: center;
+}
+
+.refer-success-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  animation: referScaleIn 0.45s var(--ease) both;
+}
+
+@keyframes referScaleIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.refer-success-title {
+  font-size: clamp(24px, 3.5vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.refer-success-title .highlight {
+  position: relative;
+  display: inline;
+  isolation: isolate;
+}
+
+.refer-success-title .highlight::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: 0.08em;
+  height: 0.28em;
+  background: var(--yellow);
+  border-radius: 1px;
+  z-index: -1;
+}
+
+.refer-success-text {
+  font-size: 16px;
+  color: var(--ink-2);
+  margin-bottom: 28px;
+}
+
+.refer-gift-card {
+  background: var(--bg-off);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 28px 24px;
+  margin-bottom: 28px;
+}
+
+.refer-gift-card-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-3);
+  margin-bottom: 6px;
+}
+
+.refer-gift-card-value {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.refer-gift-card-sub {
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.45;
+}
+
+.refer-store-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.refer-section[data-section="5"].active ~ .refer-actions {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .refer-main {
+    padding: 40px 0 64px;
+    align-items: flex-start;
+  }
+
+  .refer-progress {
+    margin-bottom: 36px;
+  }
+
+  .refer-step-circle {
+    width: 34px;
+    height: 34px;
+    font-size: 12px;
+  }
+
+  .refer-step-label {
+    font-size: 9px;
+  }
+
+  .refer-subtitle {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .refer-actions {
+    flex-direction: column-reverse;
+    margin-top: 36px;
+  }
+
+  .refer-btn-back.visible {
+    width: 100%;
+  }
+
+  .refer-store-btns {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .refer-store-btns .store-btn {
+    justify-content: center;
+  }
+}

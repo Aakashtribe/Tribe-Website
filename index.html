@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tribe; Money without borders</title>
+<meta name="description" content="Send, spend and receive money globally. Zero fees. Instant. Powered by regulated stablecoins."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" href="https://fonts.gstatic.com/s/googlesansflex/v21/t5s6IQcYNIWbFgDgAAzZ34auoVyXkJCOvp3SFWJbN5hF8Ju1x6sKCyp0l9sI40swNJwInycYAJzz0m7kJ4qFQOJBOjLvDSndo0SKMpKSTzwliVdHAy4ByxIxW2Y.woff2" as="font" type="font/woff2" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css?v=5"/>
+</head>
+<body>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <button class="mobile-tab active" onclick="setTab('home');closeMobileMenu()">Home</button>
+  <button class="mobile-tab" onclick="setTab('send');closeMobileMenu()">Send</button>
+  <button class="mobile-tab" onclick="setTab('spend');closeMobileMenu()">Spend</button>
+  <button class="mobile-tab" onclick="setTab('receive');closeMobileMenu()">Receive</button>
+  <button class="mobile-tab" onclick="setTab('about');closeMobileMenu()">About</button>
+  <button class="mobile-tab" onclick="setTab('contact');closeMobileMenu()">Contact</button>
+  <button class="cta-primary" data-coming-soon>Download App →</button>
+</div>
+<!-- NAVIGATION -->
+<nav id="main-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="nav-logo" onclick="setTab('home')"><img src="assets/icons/tribe-logo.png" alt="Tribe" class="brand-logo brand-logo--nav"/></div>
+      <div class="nav-tabs">
+        <button class="nav-tab active" data-tab="home" onclick="setTab('home')">Home</button>
+        <button class="nav-tab" data-tab="send" onclick="setTab('send')">Send</button>
+        <button class="nav-tab" data-tab="spend" onclick="setTab('spend')">Spend</button>
+        <button class="nav-tab" data-tab="receive" onclick="setTab('receive')">Receive</button>
+        <button class="nav-tab" data-tab="about" onclick="setTab('about')">About</button>
+        <button class="nav-tab" data-tab="contact" onclick="setTab('contact')">Contact</button>
+      </div>
+      <div class="nav-right">
+        <button class="btn-download" data-coming-soon>Join the tr<span class="slash">/</span>be</button>
+        <div class="nav-hamburger" onclick="openMobileMenu()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="tab-panel active home-screen" id="tab-home">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-h1 hero-h1--drama reveal d1">
+            <span class="hero-h1-line hero-h1-line--grey">Life has enough drama.</span>
+            <span class="hero-h1-line hero-h1-line--mark"><span class="highlight">Your payments app shouldn't add to it.</span></span>
+          </h1>
+          <div class="hero-ctas reveal d2">
+            <button type="button" class="cta-primary" data-coming-soon>Download boring</button>
+          </div>
+        </div>
+        <div class="phone-stage reveal d2">
+          <img src="assets/images/screens/Send.png?v=5" alt="Tribe Send screen" class="app-screen"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="feat-section">
+
+      <div class="feat-row reveal">
+        <div>
+          <h2 class="feat-h2"><span class="highlight">Send money home.</span><br>Without any plot twists.</h2>
+          <p class="feat-body">No more &ldquo;Wait, there was a fee?&rdquo;</p>
+          <ul class="feat-checklist">
+            <li>Google rates or better</li>
+            <li>No hidden charges</li>
+            <li>Instant delivery</li>
+          </ul>
+          <a href="#" class="feat-link" onclick="setTab('send');return false">Read more</a>
+        </div>
+        <div class="feat-visual">
+          <div class="phone-stage">
+            <img src="assets/images/screens/Send.png?v=5" alt="Tribe Send screen" class="app-screen app-screen--md"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-row reverse reveal">
+        <div class="feat-visual">
+          <div class="phone-stage">
+            <video src="assets/images/screens/SpendV5.mp4?v=1" class="app-screen app-screen--md" autoplay loop muted playsinline aria-label="Tribe Spend screen"></video>
+          </div>
+        </div>
+        <div>
+          <h2 class="feat-h2"><span class="highlight">Spend in dollars.</span><br>Without using four apps.</h2>
+          <p class="feat-body">No more &ldquo;converting on one app, storing on another, spending on a third.&rdquo;</p>
+          <ul class="feat-checklist">
+            <li>Dollar card for everyday spends</li>
+            <li>No surprise forex markups</li>
+            <li>Works for subscriptions, travel, and online payments</li>
+          </ul>
+          <a href="#" class="feat-link" onclick="setTab('spend');return false">Read more</a>
+        </div>
+      </div>
+
+      <div class="feat-row reveal">
+        <div>
+          <h2 class="feat-h2"><span class="highlight">Get paid in dollars.</span><br>Without moving to the USA.</h2>
+          <p class="feat-body">No more &ldquo;can you try another payment method?&rdquo;</p>
+          <ul class="feat-checklist">
+            <li>An account in your name, with a US bank</li>
+            <li>Receive salary, freelance income, and platform payouts</li>
+            <li>Bring money home at better rates</li>
+          </ul>
+          <a href="#" class="feat-link" onclick="setTab('receive');return false">Read more</a>
+        </div>
+        <div class="feat-visual">
+          <div class="phone-stage">
+            <img src="assets/images/screens/receive.png?v=6" alt="Tribe Receive screen" class="app-screen app-screen--md"/>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-head section-head--dark section-head--calc">
+        <h2>Boring has fans.</h2>
+      </div>
+      <svg class="stars-gradient-defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="stars-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#2970FF"/>
+            <stop offset="100%" stop-color="#7A5AF8"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="testimonials-grid">
+        <div class="testimonial reveal">
+          <svg class="stars" width="114" height="20" viewBox="0 0 114 20" aria-label="5 out of 5 stars" role="img">
+            <text x="0" y="17" fill="url(#stars-gradient)" font-size="18" font-weight="700" letter-spacing="2">★★★★★</text>
+          </svg>
+          <p class="testimonial-q">"Tribe is great. I get the best rates everytime."</p>
+          <div class="t-author">
+            <img src="assets/images/testimonial%20user/Swaraj.png" alt="Swaraj Kashyap" class="t-avatar t-avatar--photo"/>
+            <div><div class="t-name">Swaraj Kashyap</div><div class="t-sub">Sends monthly to India</div></div>
+          </div>
+        </div>
+        <div class="testimonial reveal d1">
+          <svg class="stars" width="114" height="20" viewBox="0 0 114 20" aria-label="5 out of 5 stars" role="img">
+            <text x="0" y="17" fill="url(#stars-gradient)" font-size="18" font-weight="700" letter-spacing="2">★★★★★</text>
+          </svg>
+          <p class="testimonial-q">"Tribe has the most seamless experience. Super simple and super fast."</p>
+          <div class="t-author">
+            <img src="assets/images/testimonial%20user/Swati.png" alt="Swati Maini" class="t-avatar t-avatar--photo"/>
+            <div><div class="t-name">Swati Maini</div><div class="t-sub">Remote worker · Philippines</div></div>
+          </div>
+        </div>
+        <div class="testimonial reveal d2">
+          <svg class="stars" width="114" height="20" viewBox="0 0 114 20" aria-label="5 out of 5 stars" role="img">
+            <text x="0" y="17" fill="url(#stars-gradient)" font-size="18" font-weight="700" letter-spacing="2">★★★★★</text>
+          </svg>
+          <p class="testimonial-q">"I was recommended Tribe by a friend. I now use it every month to send money to my parents."</p>
+          <div class="t-author">
+            <img src="assets/images/testimonial%20user/Mahima.png" alt="Mahima Sharma" class="t-avatar t-avatar--photo"/>
+            <div><div class="t-name">Mahima Sharma</div><div class="t-sub">Engineer in the US · sends to India</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /home -->
+<div class="tab-panel" id="tab-send">
+<section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-h1 hero-h1--drama">
+            <span class="hero-h1-line hero-h1-line--grey">Love suspense? Leave your phone on the bus.</span>
+            <span class="hero-h1-line hero-h1-line--mark">On tr<span class="slash">/</span>be, sending money home is <span class="highlight">suspense-free.</span></span>
+          </h1>
+        </div>
+        <div class="phone-stage">
+          <img src="assets/images/screens/Send.png?v=5" alt="Tribe Send screen" class="app-screen"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON CALC -->
+  <div id="calc-anchor"></div>
+  <section class="calc-section">
+    <div class="container">
+      <div class="section-head section-head--calc">
+        <h4 class="section-caption">Compare with others</h4>
+        <h2>Same dollars sent. <em>More money received.</em></h2>
+      </div>
+      <div class="calc-card-wrap">
+        <div class="compare-table-head">
+          <h3 class="compare-deals-title" id="calc-deals-title">You send <span class="highlight">1,000 USD</span></h3>
+        </div>
+        <div class="compare-table-scroll">
+          <table class="calc-table compare-table">
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>Recipient Gets</th>
+              </tr>
+            </thead>
+            <tbody id="calc-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-section">
+    <div class="container">
+      <div class="section-head section-head--calc reveal">
+        <h4 class="section-caption">How it works</h4>
+        <h2>Three taps. <em>Zero drama.</em></h2>
+      </div>
+      <ol class="how-steps reveal">
+          <li class="how-step">
+            <span class="how-step-num" aria-hidden="true">1</span>
+            <div class="how-step-body">
+              <h3 class="how-step-title">Pick a recipient</h3>
+              <p class="how-step-desc">Or send to someone new in seconds.</p>
+            </div>
+          </li>
+          <li class="how-step">
+            <span class="how-step-num" aria-hidden="true">2</span>
+            <div class="how-step-body">
+              <h3 class="how-step-title">See the rate &amp; what lands</h3>
+              <p class="how-step-desc">Locked before you confirm.</p>
+            </div>
+          </li>
+          <li class="how-step">
+            <span class="how-step-num" aria-hidden="true">3</span>
+            <div class="how-step-body">
+              <h3 class="how-step-title">Send. Done in minutes.</h3>
+              <p class="how-step-desc">We text you when it lands.</p>
+            </div>
+          </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-head section-head--calc reveal">
+        <h4 class="section-caption">FAQ</h4>
+        <h2>The boring details</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item is-open">
+          <div class="faq-row">
+            <h3 class="faq-question">How fast does money arrive?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="true" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">−</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>Most transfers land in under two minutes.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-row">
+            <h3 class="faq-question">What&rsquo;s the catch on fees?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="false" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>There isn&rsquo;t one. We show the exchange rate and any fee up front, with no hidden FX spread and no expiring promo gimmicks.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-row">
+            <h3 class="faq-question">Which countries can I send to?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="false" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>Today: from the US to India and the Philippines. More corridors are launching soon; one at a time.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-row">
+            <h3 class="faq-question">How are the rates this good?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="false" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>tr/be runs on regulated stablecoin rails (USDC), which cut out layers of correspondent-bank cost. We pass the savings on.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /send -->
+<div class="tab-panel" id="tab-spend">
+<section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-h1 hero-h1--drama">
+            <span class="hero-h1-line hero-h1-line--grey">Love rejection? Call your ex tonight.</span>
+            <span class="hero-h1-line hero-h1-line--mark">The tr<span class="slash">/</span>be dollar card works <span class="highlight">rejection-free.</span></span>
+          </h1>
+        </div>
+        <div class="phone-stage">
+          <video src="assets/images/screens/SpendV6.mp4?v=1" class="app-screen" autoplay loop muted playsinline aria-label="Tribe Spend screen"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="spend-features">
+    <div class="container">
+      <div class="section-head section-head--calc reveal">
+        <h4 class="section-caption">What you get</h4>
+        <h2>Everything in one place.</h2>
+      </div>
+      <div class="spend-features-grid reveal">
+        <article class="spend-feature">
+          <div class="icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <h3 class="spend-feature-title">Virtual dollar card</h3>
+          <p class="spend-feature-desc">Accepted at 150 million merchants worldwide.</p>
+        </article>
+        <article class="spend-feature">
+          <div class="icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3 class="spend-feature-title">Load, convert, spend</h3>
+          <p class="spend-feature-desc">Add money, convert to dollars, and spend from one place.</p>
+        </article>
+        <article class="spend-feature">
+          <div class="icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+          </div>
+          <h3 class="spend-feature-title">No FX markup</h3>
+          <p class="spend-feature-desc">Spend in dollars without surprise forex markups or dollar-spend transaction fees.</p>
+        </article>
+        <article class="spend-feature">
+          <div class="icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="spend-feature-title">Made for online life</h3>
+          <p class="spend-feature-desc">Use it for subscriptions, travel, tools, shopping, and international payments.</p>
+        </article>
+        <article class="spend-feature">
+          <div class="icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3 class="spend-feature-title">Quick KYC. Instant access.</h3>
+          <p class="spend-feature-desc">Create your account with your phone number, ID, and selfie. Get set up in minutes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="spend-subscriptions">
+    <div class="container">
+      <div class="section-head section-head--calc section-head--dark reveal">
+        <h4 class="section-caption section-caption--dark">Subscriptions</h4>
+        <h2>Every platform. No declined cards.</h2>
+        <p>A US-issued dollar card that works everywhere; without a US address, bank account, or residency.</p>
+      </div>
+    </div>
+    <div class="spend-subs-marquee reveal" aria-label="Supported platforms">
+      <div class="spend-subs-scroll">
+        <span class="spend-subs-pill">Netflix</span>
+        <span class="spend-subs-pill">Spotify</span>
+        <span class="spend-subs-pill">ChatGPT</span>
+        <span class="spend-subs-pill">Amazon</span>
+        <span class="spend-subs-pill">Apple</span>
+        <span class="spend-subs-pill">AWS</span>
+        <span class="spend-subs-pill">Uber</span>
+        <span class="spend-subs-pill">Google Cloud</span>
+        <span class="spend-subs-pill">Steam</span>
+        <span class="spend-subs-pill" aria-hidden="true">Netflix</span>
+        <span class="spend-subs-pill" aria-hidden="true">Spotify</span>
+        <span class="spend-subs-pill" aria-hidden="true">ChatGPT</span>
+        <span class="spend-subs-pill" aria-hidden="true">Amazon</span>
+        <span class="spend-subs-pill" aria-hidden="true">Apple</span>
+        <span class="spend-subs-pill" aria-hidden="true">AWS</span>
+        <span class="spend-subs-pill" aria-hidden="true">Uber</span>
+        <span class="spend-subs-pill" aria-hidden="true">Google Cloud</span>
+        <span class="spend-subs-pill" aria-hidden="true">Steam</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-head section-head--calc reveal">
+        <h4 class="section-caption">FAQ</h4>
+        <h2>The boring details</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item is-open">
+          <div class="faq-row">
+            <h3 class="faq-question">Is the card physical or virtual?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="true" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">−</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>Instantly online, anywhere. Accepted at 150 million merchants worldwide. A one-time issuance fee applies.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-row">
+            <h3 class="faq-question">Will I get hit with forex markups?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="false" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>No. You spend in dollars without surprise FX markups or dollar-spend transaction fees. What you load is what you spend.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-row">
+            <h3 class="faq-question">Can I add it to Apple Pay / Google Pay?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="false" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>Yes; add your virtual card to Apple Pay and Google Pay for tap-to-pay anywhere contactless is accepted.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-row">
+            <h3 class="faq-question">How do I load money?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="false" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>Add money, convert to dollars, and spend; all from one place in the app. No juggling four apps to get a dollar onto a card.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /spend -->
+<div class="tab-panel" id="tab-receive">
+<section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-h1 hero-h1--drama">
+            <span class="hero-h1-line hero-h1-line--grey">Love awkward conversations? Ask your father-in-law about his bald patch.</span>
+            <span class="hero-h1-line hero-h1-line--mark">No awkward moments <span class="highlight">with</span> <span class="highlight">tr<span class="slash">/</span>be.</span></span>
+          </h1>
+        </div>
+        <div class="phone-stage">
+          <img src="assets/images/screens/receive.png?v=6" alt="Tribe Receive screen" class="app-screen"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-section receive-how" id="receive-how-anchor">
+    <div class="container">
+      <div class="section-head section-head--calc reveal">
+        <h4 class="section-caption">How it works</h4>
+        <h2>In four simple steps.</h2>
+      </div>
+      <ol class="receive-how-steps reveal">
+        <li class="receive-how-step">
+          <span class="receive-how-num" aria-hidden="true">01</span>
+          <h3 class="receive-how-title">Create your tr<span class="slash">/</span>be account</h3>
+          <p class="receive-how-desc">Complete KYC with your phone number, ID, and selfie. No US address needed.</p>
+        </li>
+        <li class="receive-how-step">
+          <span class="receive-how-num" aria-hidden="true">02</span>
+          <h3 class="receive-how-title">Get your US account details</h3>
+          <p class="receive-how-desc">Use your account and routing details for ACH and wire payments in USD.</p>
+        </li>
+        <li class="receive-how-step">
+          <span class="receive-how-num" aria-hidden="true">03</span>
+          <h3 class="receive-how-title">Share them with whoever pays you</h3>
+          <p class="receive-how-desc">Employers, clients, and platforms can send USD to your tr<span class="slash">/</span>be account.</p>
+        </li>
+        <li class="receive-how-step">
+          <span class="receive-how-num" aria-hidden="true">04</span>
+          <h3 class="receive-how-title">Get ready to receive!</h3>
+          <p class="receive-how-desc">Works for salary, freelance income, and platform payouts. No US address needed.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-head section-head--calc reveal">
+        <h4 class="section-caption">FAQ</h4>
+        <h2>The boring details</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item is-open">
+          <div class="faq-row">
+            <h3 class="faq-question">Do I need a US address or SSN?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="true" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">−</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>No. Complete KYC with your phone number, ID, and selfie; same as anyone else on tr<span class="slash">/</span>be. Your account details are issued through our banking partner without requiring a US address.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-row">
+            <h3 class="faq-question">What payments can I receive?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="false" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>Salary, freelance income, platform payouts, and international wires. Anything a US bank account can receive, your tr<span class="slash">/</span>be account can too.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-row">
+            <h3 class="faq-question">Which platforms work?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="false" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>Upwork, Fiverr, Stripe, PayPal, Amazon, YouTube, Patreon, direct employer deposits. If they pay to a US account, they can pay to yours.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-row">
+            <h3 class="faq-question">Can I move the dollars home?</h3>
+            <button type="button" class="faq-toggle" aria-expanded="false" aria-label="Toggle answer">
+              <span class="faq-toggle-icon" aria-hidden="true">+</span>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <p>Yes; receive in dollars, then bring money home at better rates, or spend directly with your tr<span class="slash">/</span>be dollar card.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /receive -->
+<div class="tab-panel" id="tab-about">
+    <section class="about-builders reveal">
+      <div class="container">
+      <div class="about-builders-intro">
+        <h1>We went, we saw, we<br>suffered.</h1>
+        <p class="sub">And thus, came tr<span class="slash">/</span>be.</p>
+      </div>
+      <div class="team-grid">
+        <article class="team-card">
+          <div class="person-photo">
+            <img src="assets/images/team/ADITYA.png" alt="Aditya Varma" loading="lazy"/>
+            <a href="https://www.linkedin.com/in/adityavarma71/" class="person-linkedin" target="_blank" rel="noopener noreferrer" aria-label="Aditya Varma on LinkedIn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.69 1.69 0 0013 14.83a2 2 0 00-.1.73V19h-3v-9h3v1.26a3.11 3.11 0 012.7-1.4c1.55 0 2.3 1 2.3 2.78z"/></svg>
+            </a>
+          </div>
+          <h3 class="person-name">Aditya Varma</h3>
+          <p class="person-role">Co-Founder</p>
+          <p class="person-meta">Ex SVP Urban Company</p>
+          <p class="person-meta">IIT Bombay &amp; INSEAD</p>
+        </article>
+        <article class="team-card">
+          <div class="person-photo">
+            <img src="assets/images/team/HIMANSH.png" alt="Himanshu Arora" loading="lazy"/>
+            <a href="https://www.linkedin.com/in/himanshuarora9/" class="person-linkedin" target="_blank" rel="noopener noreferrer" aria-label="Himanshu Arora on LinkedIn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.69 1.69 0 0013 14.83a2 2 0 00-.1.73V19h-3v-9h3v1.26a3.11 3.11 0 012.7-1.4c1.55 0 2.3 1 2.3 2.78z"/></svg>
+            </a>
+          </div>
+          <h3 class="person-name">Himanshu Arora</h3>
+          <p class="person-role">Co-Founder</p>
+          <p class="person-meta">Ex SVP Travel Plus</p>
+          <p class="person-meta">IIM Ahmedabad</p>
+        </article>
+        <article class="team-card">
+          <div class="person-photo">
+            <img src="assets/images/team/NIKHIL.png" alt="Nikhil Shanker" loading="lazy"/>
+            <a href="https://www.linkedin.com/in/nikhilshanker/" class="person-linkedin" target="_blank" rel="noopener noreferrer" aria-label="Nikhil Shanker on LinkedIn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.69 1.69 0 0013 14.83a2 2 0 00-.1.73V19h-3v-9h3v1.26a3.11 3.11 0 012.7-1.4c1.55 0 2.3 1 2.3 2.78z"/></svg>
+            </a>
+          </div>
+          <h3 class="person-name">Nikhil Shanker</h3>
+          <p class="person-role">Co-Founder</p>
+          <p class="person-meta">Ex VP Urban Company</p>
+          <p class="person-meta">IIM Lucknow</p>
+        </article>
+      </div>
+      </div>
+    </section>
+
+    <section class="about-team reveal">
+      <div class="container">
+      <div class="section-head section-head--calc">
+        <h4 class="section-caption">The team</h4>
+        <h2>The people making payments boring again.</h2>
+      </div>
+      <div class="about-team-photo" role="img" aria-label="Team photo"></div>
+      <p class="about-team-desc">Operators, builders, designers, engineers, compliance people, marketeers and customer-obsessed humans, all trying to make one part of global life dramatically less dramatic.</p>
+      </div>
+    </section>
+
+    <section class="about-backers reveal">
+      <div class="container">
+      <div class="section-head section-head--calc">
+        <h4 class="section-caption">The ones behind us</h4>
+        <h2>In good company.</h2>
+      </div>
+      <div class="vc-logos-row">
+        <article class="backer-vc">
+          <div class="vc-logo-card">
+            <img src="assets/images/investors/PEAK%20XV.png" alt="Peak XV Partners" class="vc-logo-img"/>
+          </div>
+          <p class="backer-name">Peak XV Partners</p>
+        </article>
+        <article class="backer-vc">
+          <div class="vc-logo-card">
+            <img src="assets/images/investors/ZERO%20PEARL.png" alt="Zero Pearl" class="vc-logo-img"/>
+          </div>
+          <p class="backer-name">Zero Pearl</p>
+        </article>
+        <article class="backer-vc">
+          <div class="vc-logo-card">
+            <img src="assets/images/investors/WHITE%20VENTURE.png" alt="White Venture Capital" class="vc-logo-img"/>
+          </div>
+          <p class="backer-name">White Venture Capital</p>
+        </article>
+      </div>
+      <div class="investors-grid">
+        <article class="backer-card">
+          <div class="person-photo person-photo--mono">
+            <img src="assets/images/investors/ABHIRAJ.png" alt="Abhiraj Singh Bhal" loading="lazy"/>
+          </div>
+          <h3 class="backer-name">Abhiraj Singh Bhal</h3>
+          <p class="backer-title">CEO &amp; Co-Founder, Urban Company</p>
+        </article>
+        <article class="backer-card">
+          <div class="person-photo person-photo--mono">
+            <img src="assets/images/investors/AMRISH.png" alt="Amrish Rau" loading="lazy"/>
+          </div>
+          <h3 class="backer-name">Amrish Rau</h3>
+          <p class="backer-title">CEO Pine Labs</p>
+        </article>
+        <article class="backer-card">
+          <div class="person-photo person-photo--mono">
+            <img src="assets/images/investors/JITENDRA.png" alt="Jitendra Gupta" loading="lazy"/>
+          </div>
+          <h3 class="backer-name">Jitendra Gupta</h3>
+          <p class="backer-title">Founder Jupiter</p>
+        </article>
+        <article class="backer-card">
+          <div class="person-photo person-photo--mono">
+            <img src="assets/images/investors/KUNAL.png" alt="Kunal Shah" loading="lazy"/>
+          </div>
+          <h3 class="backer-name">Kunal Shah</h3>
+          <p class="backer-title">CEO &amp; Founder, Cred</p>
+        </article>
+        <article class="backer-card">
+          <div class="person-photo person-photo--mono">
+            <img src="assets/images/investors/PRADEEP.png" alt="Pradeep Parameswaran" loading="lazy"/>
+          </div>
+          <h3 class="backer-name">Pradeep Parameswaran</h3>
+          <p class="backer-title">Head of Mobility at Uber</p>
+        </article>
+        <article class="backer-card">
+          <div class="person-photo person-photo--mono">
+            <img src="assets/images/investors/RAGHAV.png" alt="Raghav Chandra" loading="lazy"/>
+          </div>
+          <h3 class="backer-name">Raghav Chandra</h3>
+          <p class="backer-title">CTO &amp; Co-Founder, Urban Company</p>
+        </article>
+        <article class="backer-card">
+          <div class="person-photo person-photo--mono">
+            <img src="assets/images/investors/RISHAB.png" alt="Rishabh Goel" loading="lazy"/>
+          </div>
+          <h3 class="backer-name">Rishabh Goel</h3>
+          <p class="backer-title">CEO &amp; Co-Founder, Credgenics</p>
+        </article>
+        <article class="backer-card">
+          <div class="person-photo person-photo--mono">
+            <img src="assets/images/investors/VARUN.png" alt="Varun Khaitan" loading="lazy"/>
+          </div>
+          <h3 class="backer-name">Varun Khaitan</h3>
+          <p class="backer-title">COO &amp; Co-Founder, Urban Company</p>
+        </article>
+      </div>
+      </div>
+    </section>
+
+    <section class="about-why reveal">
+      <div class="container">
+        <div class="about-why-grid">
+          <img src="assets/icons/tr/be.png?v=2" alt="tr/be" class="about-why-mark"/>
+          <div class="about-why-copy">
+            <h4 class="section-caption section-caption--dark">Why tr/be exists</h4>
+            <h2 class="about-why-headline">The <span class="about-why-slash">/</span> represents the &ldquo;i&rdquo; that is split between two places; a home found, and a home left behind.</h2>
+            <p class="about-why-body">Half here, half there; neatly severed by time zones and distances that even infinite calls cannot fill. A wistfulness lives in the i, but also an audacity. The earliest humans sought, and so do we. Onwards, on to tomorrow, on to every frontier conceivable by imagination.</p>
+            <p class="about-why-close">Such is our tr<span class="slash">/</span>be.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+</div><!-- /about -->
+<div class="tab-panel" id="tab-contact">
+<div class="container">
+    <section class="contact-hero">
+      <h1>Get in <em>touch.</em></h1>
+      <a class="contact-email" href="mailto:support@tribemoney.ai">support@tribemoney.ai</a>
+    </section>
+  </div>
+</div><!-- /contact -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-brand-name"><img src="assets/icons/tribe-logo.png" alt="Tribe" class="brand-logo brand-logo--footer"/></span>
+        <p class="footer-tagline">World&rsquo;s Most Boring Payments App.</p>
+        <div class="footer-stores">
+          <a class="store-btn" href="#" data-coming-soon>
+            <img src="assets/icons/Apple-icon.png" alt="" width="22" height="22" class="store-btn-icon"/>
+            <span class="store-btn-label">App Store</span>
+          </a>
+          <a class="store-btn" href="#" data-coming-soon>
+            <img src="assets/icons/Play%20Store%20Icon%20Container.png" alt="" width="22" height="22" class="store-btn-icon"/>
+            <span class="store-btn-label">Play Store</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="#" onclick="setTab('send');return false">Send</a></li>
+          <li><a href="#" onclick="setTab('spend');return false">Spend</a></li>
+          <li><a href="#" onclick="setTab('receive');return false">Receive</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#" onclick="setTab('about');return false">About</a></li>
+          <li><a href="#" onclick="setTab('contact');return false">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#" onclick="alert('Privacy policy coming soon');return false">Privacy</a></li>
+          <li><a href="#" onclick="alert('Terms coming soon');return false">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">© 2026 Tribe. All rights reserved. Tribe is a financial technology company, not a bank.</p>
+      <a class="footer-domain" href="https://tribemoney.ai">tribemoney.ai</a>
+    </div>
+  </div>
+</footer>
+
+<div class="coming-soon-overlay" id="coming-soon-modal" aria-hidden="true" role="dialog" aria-labelledby="coming-soon-title">
+  <div class="coming-soon-backdrop" data-close-modal></div>
+  <div class="coming-soon-card">
+    <button type="button" class="coming-soon-close" data-close-modal aria-label="Close">&times;</button>
+    <div class="coming-soon-logo">
+      <img src="assets/icons/tribe-logo.png" alt="Tribe" class="coming-soon-logo-img"/>
+    </div>
+    <p class="coming-soon-title" id="coming-soon-title">Coming soon, stay tuned</p>
+    <div class="coming-soon-stores">
+      <button type="button" class="store-btn" disabled>
+        <img src="assets/icons/Apple-icon.png" alt="" width="22" height="22" class="store-btn-icon"/>
+        <span class="store-btn-label">App Store</span>
+      </button>
+      <button type="button" class="store-btn" disabled>
+        <img src="assets/icons/Play%20Store%20Icon%20Container.png" alt="" width="22" height="22" class="store-btn-icon"/>
+        <span class="store-btn-label">Play Store</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="js/coming-soon.js?v=1"></script>
+<script src="js/main.js?v=5"></script>
+</body>
+</html>
