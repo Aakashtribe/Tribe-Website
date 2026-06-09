@@ -2611,9 +2611,9 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   .fees-grid { grid-template-columns: 1fr; }
   .testimonials-grid, .values-grid { grid-template-columns: 1fr; }
   .team-grid,
-  .about-builders .team-grid,
-  .vc-logos-row { grid-template-columns: 1fr; }
+  .about-builders .team-grid { grid-template-columns: 1fr; }
   .about-builders .team-grid { max-width: 320px; margin-inline: auto; }
+  .vc-logos-row,
   .investors-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 16px; }
   .about-partners-cards { grid-template-columns: 1fr; }
   .about-section-title { margin-bottom: 28px; }
