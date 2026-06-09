@@ -2210,7 +2210,7 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../assets/images/screens/Hero6.jpg');
+  background-image: url('../assets/images/screens/Hero6.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
