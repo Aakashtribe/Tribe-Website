@@ -13,14 +13,14 @@ serve_with_npx() {
   fi
   echo "Serving Tribe at http://localhost:${PORT}"
   echo "Press Ctrl+C to stop."
-  exec npx --yes serve . -l "$PORT"
+  exec npx --yes serve docs -l "$PORT"
 }
 
 if command -v python3 >/dev/null 2>&1; then
   if python3 -m http.server --help >/dev/null 2>&1; then
     echo "Serving Tribe at http://localhost:${PORT}"
     echo "Press Ctrl+C to stop."
-    exec python3 -m http.server "$PORT"
+    exec python3 -m http.server "$PORT" --directory docs
   fi
 fi
 
