@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css?v=5"/>
-<link rel="stylesheet" href="css/refer.css?v=1"/>
+<link rel="stylesheet" href="css/refer.css?v=3"/>
 </head>
 <body class="refer-page">
 
@@ -19,7 +19,6 @@
       <a href="index.html" class="nav-logo" aria-label="Back to Tribe home">
         <img src="assets/icons/tribe-logo.png" alt="Tribe" class="brand-logo brand-logo--nav"/>
       </a>
-      <a href="index.html" class="refer-back-link">Back to tr<span class="slash">/</span>be</a>
     </div>
   </div>
 </nav>
@@ -60,8 +59,7 @@
 
         <div class="refer-field">
           <label class="refer-label" for="email">Email address</label>
-          <input class="refer-input" type="email" id="email" placeholder="name@example.com" autocomplete="email" required/>
-          <p class="refer-error hidden" id="emailError" role="alert"></p>
+          <input class="refer-input" type="email" id="email" placeholder="name@example.com" autocomplete="email"/>
         </div>
 
         <div class="refer-gift-box">
@@ -77,8 +75,7 @@
 
         <div class="refer-field">
           <label class="refer-label" for="verificationCode">Enter verification code</label>
-          <input class="refer-input" type="text" id="verificationCode" placeholder="123456" maxlength="6" inputmode="numeric" autocomplete="one-time-code" required/>
-          <p class="refer-error hidden" id="codeError" role="alert"></p>
+          <input class="refer-input" type="text" id="verificationCode" placeholder="123456" maxlength="6" inputmode="numeric" autocomplete="one-time-code"/>
         </div>
 
         <div class="refer-info-box">
@@ -95,9 +92,8 @@
           <label class="refer-label" for="phone">Phone number</label>
           <div class="refer-phone-row">
             <span class="refer-country-code" aria-hidden="true">🇮🇳 +91</span>
-            <input class="refer-input" type="tel" id="phone" placeholder="Enter phone number" autocomplete="tel" required/>
+            <input class="refer-input" type="tel" id="phone" placeholder="Enter phone number" autocomplete="tel"/>
           </div>
-          <p class="refer-error hidden" id="phoneError" role="alert"></p>
         </div>
 
         <div class="refer-info-box">
@@ -112,26 +108,19 @@
 
         <div class="refer-field">
           <label class="refer-label" for="firstName">First name</label>
-          <input class="refer-input" type="text" id="firstName" placeholder="First name" autocomplete="given-name" required/>
-          <p class="refer-error hidden" id="firstNameError" role="alert"></p>
+          <input class="refer-input" type="text" id="firstName" placeholder="First name" autocomplete="given-name"/>
         </div>
 
         <div class="refer-field">
           <label class="refer-label" for="lastName">Last name</label>
-          <input class="refer-input" type="text" id="lastName" placeholder="Last name" autocomplete="family-name" required/>
-          <p class="refer-error hidden" id="lastNameError" role="alert"></p>
-        </div>
-
-        <div class="refer-field">
-          <label class="refer-label" for="govId">Government ID Number</label>
-          <input class="refer-input" type="text" id="govId" placeholder="Aadhaar / PAN" required/>
-          <p class="refer-error hidden" id="govIdError" role="alert"></p>
+          <input class="refer-input" type="text" id="lastName" placeholder="Last name" autocomplete="family-name"/>
         </div>
 
         <label class="refer-check">
-          <input type="checkbox" id="agreeTerms" required/>
+          <input type="checkbox" id="agreeTerms"/>
           <span>I agree to Tribe&rsquo;s <a href="terms.html">Terms &amp; Conditions</a> and <a href="privacy.html">Privacy Policy</a></span>
         </label>
+        <div class="refer-terms-error" id="termsErrorHost"></div>
         <label class="refer-check">
           <input type="checkbox" id="agreePrivacy"/>
           <span>I agree to the processing and sharing of my data</span>
@@ -256,6 +245,6 @@
 </div>
 
 <script src="js/coming-soon.js?v=1"></script>
-<script src="js/refer.js?v=1"></script>
+<script src="js/refer.js?v=3"></script>
 </body>
 </html>

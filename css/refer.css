@@ -19,22 +19,6 @@
   height: 64px;
 }
 
-.refer-back-link {
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--ink-2);
-  letter-spacing: -0.01em;
-  transition: color 0.2s var(--ease);
-}
-
-.refer-back-link:hover {
-  color: var(--ink);
-}
-
-.refer-back-link .slash {
-  color: var(--yellow-dk);
-}
-
 .refer-main {
   min-height: calc(100vh - 64px);
   display: flex;
@@ -215,13 +199,18 @@
 }
 
 .refer-error {
+  display: none;
   font-size: 13px;
   color: #dc2626;
   margin-top: 8px;
 }
 
-.refer-error.hidden {
-  display: none;
+.refer-error.is-visible {
+  display: block;
+}
+
+.refer-terms-error {
+  min-height: 0;
 }
 
 .refer-gift-box {

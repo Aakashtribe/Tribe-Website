@@ -35,15 +35,58 @@
   const btnContinue = document.getElementById('btnContinue');
   const referActions = document.getElementById('referActions');
 
+  const errorHosts = {
+    emailError: 'email',
+    codeError: 'verificationCode',
+    phoneError: 'phone',
+    firstNameError: 'firstName',
+    lastNameError: 'lastName',
+    termsError: 'termsErrorHost',
+  };
+
+  function getErrorEl(id) {
+    let el = document.getElementById(id);
+    if (el) return el;
+
+    const hostId = errorHosts[id];
+    const host = document.getElementById(hostId);
+    if (!host) return null;
+
+    const container = hostId === 'termsErrorHost'
+      ? host
+      : host.closest('.refer-field');
+
+    if (!container) return null;
+
+    el = document.createElement('p');
+    el.id = id;
+    el.className = 'refer-error';
+    el.setAttribute('role', 'alert');
+    container.appendChild(el);
+    return el;
+  }
+
   function clearErrors() {
-    document.querySelectorAll('.refer-error').forEach((el) => el.classList.add('hidden'));
+    document.querySelectorAll('.refer-error').forEach((el) => {
+      el.textContent = '';
+      el.classList.remove('is-visible');
+    });
+    const termsHost = document.getElementById('termsErrorHost');
+    if (termsHost) termsHost.innerHTML = '';
   }
 
   function showError(id, message) {
-    const el = document.getElementById(id);
+    const el = getErrorEl(id);
     if (!el) return;
     el.textContent = message;
-    el.classList.remove('hidden');
+    el.classList.add('is-visible');
+  }
+
+  function hideError(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = '';
+    el.classList.remove('is-visible');
   }
 
   function validateEmail(email) {
@@ -125,7 +168,6 @@
       case 4: {
         const firstName = document.getElementById('firstName').value.trim();
         const lastName = document.getElementById('lastName').value.trim();
-        const govId = document.getElementById('govId').value.trim();
         const agreeTerms = document.getElementById('agreeTerms').checked;
 
         if (!firstName) {
@@ -136,12 +178,8 @@
           showError('lastNameError', 'Last name is required');
           isValid = false;
         }
-        if (!govId) {
-          showError('govIdError', 'Government ID is required');
-          isValid = false;
-        }
         if (!agreeTerms) {
-          showError('govIdError', 'You must accept the terms and conditions');
+          showError('termsError', 'You must accept the terms and conditions');
           isValid = false;
         }
         break;
@@ -184,6 +222,25 @@
       nextStep();
     }
   });
+
+  const fieldErrorMap = {
+    email: 'emailError',
+    verificationCode: 'codeError',
+    phone: 'phoneError',
+    firstName: 'firstNameError',
+    lastName: 'lastNameError',
+  };
+
+  Object.entries(fieldErrorMap).forEach(([fieldId, errorId]) => {
+    const field = document.getElementById(fieldId);
+    if (!field) return;
+    field.addEventListener('input', () => hideError(errorId));
+  });
+
+  const agreeTerms = document.getElementById('agreeTerms');
+  if (agreeTerms) {
+    agreeTerms.addEventListener('change', () => hideError('termsError'));
+  }
 
   updateProgress();
 })();
