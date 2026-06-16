@@ -121,7 +121,6 @@
     } else {
       referActions.style.display = 'flex';
       btnContinue.textContent = 'Continue →';
-      btnContinue.onclick = nextStep;
     }
   }
 
@@ -190,9 +189,24 @@
 
     if (isValid && currentStep < totalSteps) {
       currentStep += 1;
+      clearErrors();
       updateProgress();
+      focusCurrentStepField();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  }
+
+  function focusCurrentStepField() {
+    const fieldIds = {
+      1: 'email',
+      2: 'verificationCode',
+      3: 'phone',
+      4: 'firstName',
+    };
+    const fieldId = fieldIds[currentStep];
+    if (!fieldId) return;
+    const field = document.getElementById(fieldId);
+    if (field) field.focus();
   }
 
   function previousStep() {
