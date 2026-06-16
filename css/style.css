@@ -2226,7 +2226,7 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
 }
 
 #tab-home .hero {
-  background-color: #0d0d0d;
+  background-color: #000000;
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -2237,17 +2237,7 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   display: flex;
   align-items: center;
 }
-#tab-home .hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('../assets/images/screens/Hero6.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transform: scaleX(-1);
-  z-index: 0;
-}
+
 #tab-home .hero > .container {
   position: relative;
   z-index: 1;

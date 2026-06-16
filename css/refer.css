@@ -136,10 +136,20 @@
 }
 
 .refer-section[data-section="1"] .refer-title {
-  margin-bottom: 36px;
+  margin-bottom: 12px;
 }
 
 .refer-title .highlight {
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  background-image: linear-gradient(transparent calc(100% - 0.28em), var(--yellow) calc(100% - 0.28em));
+  background-size: 100% 100%;
+  padding: 0 2px;
+  margin: 0 -2px;
+}
+
+.refer-subtitle .highlight {
   position: relative;
   display: inline;
   box-decoration-break: clone;
@@ -147,7 +157,7 @@
   isolation: isolate;
 }
 
-.refer-title .highlight::after {
+.refer-subtitle .highlight::after {
   content: '';
   position: absolute;
   left: -3px;
@@ -420,11 +430,36 @@
 }
 
 .refer-check input {
+  appearance: none;
+  -webkit-appearance: none;
   width: 18px;
   height: 18px;
   margin-top: 2px;
   flex-shrink: 0;
-  accent-color: var(--ink);
+  border: 1.5px solid var(--line-2);
+  border-radius: 4px;
+  background: var(--white);
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+  transition: border-color 0.15s, background-color 0.15s, box-shadow 0.15s;
+}
+
+.refer-check input:checked {
+  background-color: var(--ink);
+  border-color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M1 5.2 4.2 8.4 11 1.6' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 11px 9px;
+}
+
+.refer-check input:focus {
+  outline: none;
+}
+
+.refer-check input:focus-visible {
+  box-shadow: 0 0 0 3px var(--white), 0 0 0 5px #2970FF;
 }
 
 .refer-check a {

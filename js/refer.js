@@ -21,8 +21,8 @@
   const referrerNameTitle = document.getElementById('referrerNameTitle');
   if (referrerNameTitle) referrerNameTitle.textContent = referrer;
 
-  const giftHeadlineAmount = document.getElementById('giftHeadlineAmount');
-  if (giftHeadlineAmount) giftHeadlineAmount.textContent = formatGift(giftAmount);
+  const giftClaimAmount = document.getElementById('giftClaimAmount');
+  if (giftClaimAmount) giftClaimAmount.textContent = formatGift(giftAmount);
 
   const successGiftAmount = document.getElementById('successGiftAmount');
   if (successGiftAmount) successGiftAmount.textContent = appliedLabel;
