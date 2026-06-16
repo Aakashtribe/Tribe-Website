@@ -2271,8 +2271,19 @@ footer { padding: 80px 0 40px; border-top: 1px solid var(--line); background: #f
   display: none;
 }
 #tab-home .hero .hero-ctas {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
   justify-content: flex-start;
   margin-top: 0;
+}
+#tab-home .hero .hero-tagline {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  max-width: 280px;
 }
 #tab-home .hero .cta-primary {
   background: #ffffff;
