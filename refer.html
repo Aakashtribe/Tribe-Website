@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/style.css?v=5"/>
-<link rel="stylesheet" href="css/refer.css?v=3"/>
+<link rel="stylesheet" href="css/refer.css?v=25"/>
 </head>
 <body class="refer-page">
 
@@ -27,82 +27,128 @@
   <div class="container">
     <div class="refer-form-container">
 
-      <div class="refer-progress" aria-label="Signup progress">
+      <div class="refer-progress" id="referProgress" aria-label="Signup progress">
         <div class="refer-progress-steps">
           <div class="refer-progress-step">
-            <div class="refer-step-circle active" data-step-circle="1">1</div>
-            <span class="refer-step-label">Sign in</span>
+            <div class="refer-step-circle active" data-progress-step="1">1</div>
+            <span class="refer-step-label">Email verification</span>
           </div>
           <div class="refer-progress-step">
-            <div class="refer-step-circle" data-step-circle="2">2</div>
-            <span class="refer-step-label">Code verify</span>
+            <div class="refer-step-circle" data-progress-step="2">2</div>
+            <span class="refer-step-label">Phone verification</span>
           </div>
           <div class="refer-progress-step">
-            <div class="refer-step-circle" data-step-circle="3">3</div>
-            <span class="refer-step-label">Phone</span>
-          </div>
-          <div class="refer-progress-step">
-            <div class="refer-step-circle" data-step-circle="4">4</div>
-            <span class="refer-step-label">Details</span>
-          </div>
-          <div class="refer-progress-step">
-            <div class="refer-step-circle" data-step-circle="5">5</div>
-            <span class="refer-step-label">Complete</span>
+            <div class="refer-step-circle" data-progress-step="3">3</div>
+            <span class="refer-step-label">User registration</span>
           </div>
         </div>
       </div>
 
+      <div class="refer-form-card">
       <!-- Step 1 -->
       <section class="refer-section active" data-section="1">
-        <h1 class="refer-title">Zero fees, better than Google exchange rates</h1>
-        <p class="refer-subtitle">2 to 3% better rates than all other major platforms</p>
+        <h1 class="refer-title">Congratulations! <span id="referrerNameTitle">Anant</span> sent you a <span class="highlight" id="giftHeadlineAmount">$100</span> <span class="highlight">gift</span>.</h1>
 
         <div class="refer-field">
-          <label class="refer-label" for="email">Email address</label>
+          <label class="refer-label" for="email">Enter your email address</label>
           <input class="refer-input" type="email" id="email" placeholder="name@example.com" autocomplete="email"/>
-        </div>
-
-        <div class="refer-gift-box">
-          <p><span id="referrerName">Anant</span> just sent you a <strong class="refer-gift-amount" id="giftAmountLabel">$100 gift</strong></p>
-          <p class="refer-gift-note">This gift will be added to your account after verification and can be used for transactions.</p>
         </div>
       </section>
 
-      <!-- Step 2 -->
+      <!-- Step 2: Email verification code -->
       <section class="refer-section" data-section="2">
-        <h1 class="refer-title"><span id="referrerName2">Anant</span> just sent you a <span class="highlight" id="giftAmountHeadline">$100 gift</span></h1>
+        <h1 class="refer-title">Enter verification code</h1>
         <p class="refer-subtitle">A 6-digit verification code has been sent to <strong id="emailDisplay">name@example.com</strong></p>
 
         <div class="refer-field">
-          <label class="refer-label" for="verificationCode">Enter verification code</label>
-          <input class="refer-input" type="text" id="verificationCode" placeholder="123456" maxlength="6" inputmode="numeric" autocomplete="one-time-code"/>
+          <input class="refer-input" type="text" id="emailVerificationCode" placeholder="123456" maxlength="6" inputmode="numeric" autocomplete="one-time-code" aria-label="Email verification code"/>
         </div>
 
-        <div class="refer-info-box">
-          Didn&rsquo;t receive the code? Check your spam folder or <button type="button" class="refer-text-btn" id="resendCode">request a new one</button>
+        <div class="refer-info-box" id="emailCodeResendBox">
+          <p class="refer-resend-countdown" id="emailCodeResendCountdown">Didn&rsquo;t receive the code? Resend after 30s</p>
+          <p class="refer-resend-ready" id="emailCodeResendReady" hidden>
+            Didn&rsquo;t receive the code? <button type="button" class="refer-text-btn" id="resendEmailCode">Request a new one</button>
+          </p>
         </div>
       </section>
 
-      <!-- Step 3 -->
+      <!-- Step 3: Phone -->
       <section class="refer-section" data-section="3">
         <h1 class="refer-title">Verify your phone number</h1>
         <p class="refer-subtitle">A quick step to keep your account secure</p>
 
         <div class="refer-field">
-          <label class="refer-label" for="phone">Phone number</label>
+          <label class="refer-label" for="phone">Enter phone number</label>
           <div class="refer-phone-row">
-            <span class="refer-country-code" aria-hidden="true">🇮🇳 +91</span>
+            <div class="refer-country-select" id="referCountrySelect">
+              <button type="button" class="refer-country-trigger" id="referCountryTrigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country code">
+                <img src="assets/icons/flags/flag-usa.png" alt="" class="refer-country-flag" id="referCountryFlag" width="22" height="22"/>
+                <span class="refer-country-dial" id="referCountryDial">+1</span>
+                <img src="assets/icons/chevron-down.png?v=2" alt="" class="refer-country-chevron" width="20" height="20"/>
+              </button>
+              <ul class="refer-country-menu" id="referCountryMenu" role="listbox" hidden>
+                <li role="presentation">
+                  <button type="button" class="refer-country-option is-selected" role="option" aria-selected="true" data-flag="assets/icons/flags/flag-usa.png" data-dial="+1" data-label="United States">
+                    <img src="assets/icons/flags/flag-usa.png" alt="" class="refer-country-flag" width="22" height="22"/>
+                    <span class="refer-country-option-label">United States</span>
+                    <span class="refer-country-option-dial">+1</span>
+                  </button>
+                </li>
+                <li role="presentation">
+                  <button type="button" class="refer-country-option is-disabled" role="option" aria-selected="false" aria-disabled="true" disabled data-flag="assets/icons/flags/flag-india.png" data-dial="+91" data-label="India">
+                    <img src="assets/icons/flags/flag-india.png" alt="" class="refer-country-flag" width="22" height="22"/>
+                    <span class="refer-country-option-label">India</span>
+                    <span class="refer-country-option-dial">+91</span>
+                  </button>
+                </li>
+                <li role="presentation">
+                  <button type="button" class="refer-country-option is-disabled" role="option" aria-selected="false" aria-disabled="true" disabled data-flag="assets/icons/flags/flag-philippines.png" data-dial="+63" data-label="Philippines">
+                    <img src="assets/icons/flags/flag-philippines.png" alt="" class="refer-country-flag" width="22" height="22"/>
+                    <span class="refer-country-option-label">Philippines</span>
+                    <span class="refer-country-option-dial">+63</span>
+                  </button>
+                </li>
+                <li role="presentation">
+                  <button type="button" class="refer-country-option is-disabled" role="option" aria-selected="false" aria-disabled="true" disabled data-flag="assets/icons/flags/flag-nigeria.png" data-dial="+234" data-label="Nigeria">
+                    <img src="assets/icons/flags/flag-nigeria.png" alt="" class="refer-country-flag" width="22" height="22"/>
+                    <span class="refer-country-option-label">Nigeria</span>
+                    <span class="refer-country-option-dial">+234</span>
+                  </button>
+                </li>
+                <li role="presentation">
+                  <button type="button" class="refer-country-option is-disabled" role="option" aria-selected="false" aria-disabled="true" disabled data-flag="assets/icons/flags/flag-vietnam.png" data-dial="+84" data-label="Vietnam">
+                    <img src="assets/icons/flags/flag-vietnam.png" alt="" class="refer-country-flag" width="22" height="22"/>
+                    <span class="refer-country-option-label">Vietnam</span>
+                    <span class="refer-country-option-dial">+84</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
             <input class="refer-input" type="tel" id="phone" placeholder="Enter phone number" autocomplete="tel"/>
           </div>
         </div>
 
-        <div class="refer-info-box">
-          We&rsquo;ll send a verification code to this number. Make sure it matches your government ID.
+      </section>
+
+      <!-- Step 4: Phone verification code -->
+      <section class="refer-section" data-section="4">
+        <h1 class="refer-title">Enter verification code</h1>
+        <p class="refer-subtitle">A 6-digit verification code has been sent to <strong id="phoneDisplay">+1 (555) 555-5555</strong></p>
+
+        <div class="refer-field">
+          <input class="refer-input" type="text" id="verificationCode" placeholder="123456" maxlength="6" inputmode="numeric" autocomplete="one-time-code" aria-label="Verification code"/>
+        </div>
+
+        <div class="refer-info-box" id="codeResendBox">
+          <p class="refer-resend-countdown" id="codeResendCountdown">Didn&rsquo;t receive the code? Resend after 30s</p>
+          <p class="refer-resend-ready" id="codeResendReady" hidden>
+            Didn&rsquo;t receive the code? <button type="button" class="refer-text-btn" id="resendCode">Request a new one</button>
+          </p>
         </div>
       </section>
 
-      <!-- Step 4 -->
-      <section class="refer-section" data-section="4">
+      <!-- Step 5 -->
+      <section class="refer-section" data-section="5">
         <h1 class="refer-title">What should we call you?</h1>
         <p class="refer-subtitle">Enter your name exactly as on your government ID</p>
 
@@ -127,18 +173,12 @@
         </label>
       </section>
 
-      <!-- Step 5 -->
-      <section class="refer-section" data-section="5">
+      <!-- Step 6: Success -->
+      <section class="refer-section" data-section="6">
         <div class="refer-success">
-          <div class="refer-success-icon" aria-hidden="true">✓</div>
+          <div class="refer-success-lottie" id="referSuccessLottie" aria-hidden="true"></div>
           <h2 class="refer-success-title"><span class="highlight" id="successGiftAmount">$25</span> referral gift successfully applied</h2>
           <p class="refer-success-text">Download the app and sign up to activate and enjoy</p>
-
-          <div class="refer-gift-card">
-            <p class="refer-gift-card-label">Zero fees, better than Google</p>
-            <p class="refer-gift-card-value" id="successGiftValue">$25</p>
-            <p class="refer-gift-card-sub">Exchange rates 2 to 3% better than other platforms</p>
-          </div>
 
           <div class="refer-store-btns">
             <a class="store-btn" href="#" data-coming-soon>
@@ -154,8 +194,9 @@
       </section>
 
       <div class="refer-actions" id="referActions">
-        <button type="button" class="refer-btn refer-btn-back" id="btnBack">← Back</button>
-        <button type="button" class="refer-btn refer-btn-continue cta-primary" id="btnContinue">Continue →</button>
+        <button type="button" class="refer-btn refer-btn-back" id="btnBack">Back</button>
+        <button type="button" class="refer-btn refer-btn-continue cta-primary" id="btnContinue">Continue</button>
+      </div>
       </div>
 
     </div>
@@ -244,7 +285,9 @@
   </div>
 </div>
 
+<script src="js/lottie.min.js"></script>
+<script src="js/refer-success-lottie.js"></script>
 <script src="js/coming-soon.js?v=1"></script>
-<script src="js/refer.js?v=4"></script>
+<script src="js/refer.js?v=20"></script>
 </body>
 </html>
